@@ -1,0 +1,26 @@
+import java.util.*;
+public class problem2 {
+    public static int search(String s, String [][]arr){
+        int k=0;
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                if(arr[i][j].equals(s)){
+                    k++;
+                }
+            }
+
+        }return k;
+    }
+
+    public static void main(String args[]) {
+        String arr[][]={{"D","F","G"},
+                        {"D","L","P"},
+                {"D","K","K","H"},
+                {"H"}};
+        String D="D";
+        System.out.println( "D-->"+search(D,arr));
+        String H="H";
+        System.out.println( "H-->"+search(H,arr));
+
+    }
+}
