@@ -1,0 +1,32 @@
+
+import java.util.*;
+public class problem2 {
+    public static int search(int []nums){
+        Arrays.sort(nums);
+        int k=2;
+        int ans=0;
+        for (int i=0;i< nums.length;i++){
+            for (int j=0;j< nums.length;j++){
+                if(nums[i]==nums[j]){
+                    k--;
+
+                }
+
+            }if(k==1){
+                ans=nums[i];
+            }k=2;
+        }return ans;
+    }
+
+    public static void main(String args[]) {
+        int []nums={2,2,1};
+        int []nums1={4,1,2,1,2};
+        int [] nums2={1};
+        int [] nums3={2,2,3,4,3,4,5,7,7,6,6,8,8,0,0};
+        System.out.println(search(nums));
+        System.out.println(search(nums1));
+        System.out.println(search(nums2));
+        System.out.println(search(nums3));
+
+    }
+}
