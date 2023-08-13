@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.regex.*;
+public class problem2 {
+
+    public static boolean valid(String s) {
+
+        boolean k=false;
+        try{
+        int n=Integer.parseInt(s);}
+        catch (NumberFormatException ex){
+            System.out.print("");
+
+        }
+
+
+        if (s.length() == 4 ) {
+           k= Pattern.matches("[0-9]{4}",s);
+        }
+        if (s.length() == 6) {
+            k= Pattern.matches("[0-9]{6}",s);
+        }
+
+        return k;
+    }
+
+
+    public static void main(String args[]) {
+
+        System.out.println(valid("121317"));
+        System.out.println(valid("1234"));
+        System.out.println(valid("45135"));
+        System.out.println(valid("89abc1"));
+        System.out.println(valid("900876"));
+        System.out.println(valid(" 4983"));
+
+    }
+}
