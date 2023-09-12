@@ -1,0 +1,52 @@
+class pattern{
+    public static void s(int n){
+
+        for (int i=1;i<n;i++)
+        {
+            for (int j=1;j<=i;j++){
+                System.out.print(j);
+            }
+            for (int k=n-1;k>i;k--){
+                System.out.print(i);
+            }
+            for (int k=n;k>i;k--){
+
+                System.out.print(i);
+            }
+            for (int m=i;m>=1;m--){
+                System.out.print(m);
+            }
+
+
+        System.out.println();
+        }
+        for (int i=n;i>0;i--){
+
+            for (int j=1;j<=i;j++){
+                if((i>1) && (j<n)){
+                System.out.print(j);}
+            }
+
+            for (int k=i;k<n-1;k++){
+                System.out.print(i);
+            }
+            for (int k=i;k<n;k++){
+                System.out.print(i);
+            }
+
+            for (int l=i;l>0;l--){
+                if(i==1 && l==1){
+                    System.out.print(l+"1");
+                }else
+                System.out.print(l);
+            }
+
+            System.out.println();
+        }
+
+    }
+
+    public static void main(String[]args){
+        s(5);
+    }
+}
