@@ -1,0 +1,36 @@
+import java.util.*;
+class Solution {
+    public int[] sortEvenOdd(int[] nums) {
+        List <Integer>odd=new ArrayList<>();
+        List<Integer>even=new ArrayList<>();
+        int j=0;
+        for(int i=1;i<=nums.length;i++){
+            if(i%2!=0){
+                odd.add(nums[j]);
+                j++;
+            }else{
+                even.add(nums[j]);
+                j++;
+            }
+        }
+        Collections.sort(odd);
+        Collections.sort(even);
+        int k=0;
+        int e=0;
+        int o=even.size()-1;
+        for(int i=1;i<=nums.length;i++){
+            if (i%2!=0){
+                nums[k]=odd.get(e);
+                e++;
+                k++;
+            }else{
+                nums[k]=even.get(o);
+                o--;
+                k++;
+            }
+
+        } 
+        return nums;
+        
+    }
+}
