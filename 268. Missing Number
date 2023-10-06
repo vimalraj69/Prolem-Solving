@@ -1,0 +1,12 @@
+import java.util.*;
+class Solution {
+    public int missingNumber(int[] nums) {
+        
+        int a=nums.length;
+        int b= a*(a+1)/2;
+        for(int i : nums){
+            b=b-i;
+        }
+        return b;
+    }
+}
