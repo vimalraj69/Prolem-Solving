@@ -1,0 +1,24 @@
+class Solution {
+    public int reverse(int x) {
+        int n=x;
+        int ans=0;
+        if(x<0){
+            x=x*-1;
+        }
+       String s=String.valueOf(x);
+       String r="";
+       for( int i=0;i<s.length();i++){
+           r=s.charAt(i)+r;
+    
+       }
+       try{ ans=Integer.valueOf(r);}
+       catch (Exception e){
+           return 0;
+       }
+       if(n<0){
+           ans=ans*-1;
+       }
+         if(ans> 2147483647 && ans< -2147483648) return 0;
+        return ans;
+    }
+}
