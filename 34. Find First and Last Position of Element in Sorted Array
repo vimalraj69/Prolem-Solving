@@ -1,0 +1,31 @@
+class Solution {
+    public static int[] searchRange(int[] nums, int target) {
+        int first=0;
+        int last=nums.length-1;
+        int arr[]=new int [2];
+        arr[0]=-1;
+        arr[1]=-1;
+        boolean found_f=true;
+        boolean found_l=true;
+        while((first<=last) && (found_f ||found_l )){
+            if(target==nums[first]){
+                arr[0]=first;
+                found_f=false;
+
+            }
+            if(target==nums[last]){
+                arr[1]=last;
+                found_l=false;
+            }
+            if(found_f){
+                    first++;
+            }
+
+            if(found_l){
+                    last--;
+            }
+        }
+        
+        return arr;
+    }
+}
