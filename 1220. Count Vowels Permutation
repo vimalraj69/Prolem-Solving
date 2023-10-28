@@ -1,0 +1,21 @@
+class Solution {
+    public int countVowelPermutation(int n) {
+       long a=1,e=1,i=1,o=1,u=1;
+       for(int j=1;j<n;j++){
+           long na=e;
+           long ne=(a+i)%1000000007;
+           long ni=(a+e+o+u)%1000000007;
+           long no=(i+u)%1000000007;
+           long nu=a;
+
+           a=na;
+           e=ne;
+           i=ni;
+           o=no;
+           u=nu;
+
+        }
+       long ans=(a+e+i+o+u)%1000000007;
+       return (int)ans;
+    }
+}
