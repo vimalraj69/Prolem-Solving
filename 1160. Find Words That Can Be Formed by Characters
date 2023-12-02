@@ -1,0 +1,31 @@
+class Solution {
+    public int countCharacters(String[] words, String chars) {
+      List<Character>l=new ArrayList<>();
+      
+      for(int x=0;x<chars.length();x++){
+          l.add(chars.charAt(x));
+      }
+      
+       int ans=0;
+       for(int i=0;i<words.length;i++){
+          
+           String s=words[i];
+           int check=0;
+           for(int j=0;j<s.length();j++){
+               if(l.contains(s.charAt(j))){
+                   check++;
+                   l.remove(Character.valueOf(s.charAt(j)));
+               }
+           }
+            l.clear();
+           if(s.length()==check){
+               ans=ans+s.length();
+           }
+           
+        for(int x=0;x<chars.length();x++){
+          l.add(chars.charAt(x));
+      }    
+       } 
+       return ans;
+    }
+}
