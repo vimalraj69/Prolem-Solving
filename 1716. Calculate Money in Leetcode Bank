@@ -1,0 +1,29 @@
+class Solution {
+    public int totalMoney(int n) {
+        int m=1;
+        int week=7;
+        int i=0;
+        int savings=0;
+        int amount=0;
+        int day=0;
+
+        while(i<n){
+            
+            if(day<week){
+                day++;
+                amount++;
+               savings=savings+amount; 
+               
+            }else {
+               System.out.println();
+               amount=m++;
+                day=0;
+                i--;
+
+            }
+            i++;
+        }
+        
+        return savings;
+    }
+}
