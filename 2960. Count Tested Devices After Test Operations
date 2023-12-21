@@ -1,0 +1,19 @@
+class Solution {
+    public int countTestedDevices(int[] batteryPercentages) {
+       int arr[]=batteryPercentages;
+       int i=0; 
+       int count=0;
+        while(i<arr.length){
+            if(arr[i]>0){
+                count++;
+                for(int j=i+1;j<arr.length;j++){
+                    if(arr[j]>0){
+                        arr[j]--;
+                    }
+                }
+            }
+            i++;
+        }
+        return count;
+    }
+}
