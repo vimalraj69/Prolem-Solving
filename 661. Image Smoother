@@ -1,0 +1,25 @@
+class Solution {
+    public int[][] imageSmoother(int[][] img) {
+        
+        int r=img.length;
+        int c= img[0].length;
+        int arr [][]=new int[r][c];
+        for(int i=0;i<r;++i){
+            for(int j=0;j<c;++j){
+                int t=0;
+                int d=0;
+                for(int x=Math.max(0,i-1);x<Math.min(r,i+2);++x){
+                    for(int y=Math.max(0,j-1);y<Math.min(c,j+2);++y){
+                        t+=img[x][y];
+                        d++;
+                    }
+                     
+                }
+               arr[i][j]=t/d;
+            }
+            
+
+        }
+        return arr;
+    }
+}
