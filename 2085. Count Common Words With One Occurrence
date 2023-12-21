@@ -1,0 +1,54 @@
+class Solution {
+    public int countWords(String[] words1, String[] words2) {
+       
+        List<String> s1d=new ArrayList<>();
+        List<String> s2d=new ArrayList<>();
+
+        int i=0;
+        List <String> rem=new ArrayList<>();
+
+        while(i<words1.length ||i<words2.length){
+            if(i<words1.length  ){
+                if(!s1d.contains(words1[i]) && !rem.contains(words1[i])){
+                    s1d.add(words1[i]);
+                }else{
+                    s1d.remove(words1[i]);
+                    rem.add(words1[i]);
+                }
+                
+            }
+            if(i<words2.length){
+                if(!s2d.contains(words2[i])&& !rem.contains(words2[i])){
+                    s2d.add(words2[i]);
+                }else{
+                    s2d.remove(words2[i]);
+                    rem.add(words2[i]);
+                }
+            }
+            i++;
+        }
+        
+       
+        int count=0;
+        int l=0;
+        int s=0;
+        if(s1d.size()<s2d.size()){
+            l=s2d.size();
+            s=0;
+        }else{
+           l=s1d.size(); 
+           s=1;
+        }
+        for(int j=0;j<l;j++){
+            if(s==0 && s1d.contains(s2d.get(j))){
+                count++;
+            }else if(s==1 && s2d.contains(s1d.get(j))){
+                 count++;
+            }
+        }
+        
+        
+
+        return count;
+    }
+}
