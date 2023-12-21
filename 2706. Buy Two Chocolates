@@ -1,0 +1,22 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        int buy=2;
+        int i=0;
+        int bal=money;
+        Arrays.sort(prices);
+        while(i<prices.length && money !=0){
+            if(prices[i]<=money && money-prices[i]>=0 ){
+                money-=prices[i];
+                buy--;
+            }
+            if(buy==0){
+                return money;
+            }
+            i++;
+        }
+        if(buy!=0){
+            return bal;
+        }
+        return money;
+    }
+}
