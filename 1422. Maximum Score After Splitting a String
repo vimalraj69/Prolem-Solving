@@ -1,0 +1,24 @@
+class Solution {
+    public int maxScore(String s) {
+        int i=1;
+        int max=0;
+        while(i<=s.length()-1){
+            int l=0;
+             int r=0;
+           for(int k=0;k<i;k++){
+               if(s.charAt(k)=='0'){
+                   l++;
+               }
+           }
+            for(int m=i;m<s.length();m++){
+                if(s.charAt(m)=='1'){
+                    r++;
+                }
+            }
+            i++;
+           max=Math.max(max,l+r);
+        }
+
+        return max;
+    }
+}
