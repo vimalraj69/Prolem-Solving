@@ -1,0 +1,53 @@
+class Solution {
+    public String bestHand(int[] ranks, char[] suits) {
+        int a=0;
+        int c[]=new int [ranks.length];
+         int s[]=new int [5];
+        
+        for(int i=0;i<suits.length;i++){
+            if(suits[0]==suits[i]){
+                a++;
+            }
+            if(a==suits.length){
+                return "Flush";
+            }
+            int cc=0;
+            for(int j=0;j<suits.length;j++){
+                if(ranks[i]==ranks[j]){              
+                    cc++;
+                }
+            }
+            if(cc==2){
+                s[i]=1;
+            }
+            if(cc>=3){
+                c[i]=1;
+            }
+        }
+        for(int i=0;i<c.length;i++){
+            int cc=1;
+           for(int j=i+1;j<c.length;j++){
+               if(c[i]==1 && c[j]==1){
+                   if(suits[i]!=suits[j]){
+                       cc++;
+                   }
+               }
+           }
+           if(cc>=3){
+               return "Three of a Kind";
+            }
+           
+        }      
+   
+    for(int i=0;i<c.length;i++){
+        for(int j=i+1;j<c.length;j++){
+            if(s[i]==1 && s[j]==1){
+                if(suits[i]!=suits[j]){
+                    return "Pair";
+                }
+            }
+        }
+    }
+        return "High Card";
+    }
+}
