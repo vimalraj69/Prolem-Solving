@@ -1,0 +1,42 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        String copy[]=new String[strs.length];
+         List<List<String>> ans=new ArrayList<>();
+        for(int i=0;i<strs.length;i++){
+            String s= conString(strs[i]);
+            copy[i]=s; 
+        }
+        int n=0;
+        
+        for(int i=0;i<strs.length;i++){
+            List<String> l=new ArrayList<>();
+            for(int j=i;j<strs.length;j++){
+                if(copy[i].equals(copy[j]) && con(strs[i],ans)){
+                    l.add(strs[j]);    
+                    
+                }
+
+            }if(l.size()>0){
+                ans.add(l);
+            }
+            
+            
+        }
+        
+        return ans;
+    }
+    public boolean con(String s,List<List<String>> ans){
+        for(int i=0;i<ans.size();i++){
+            if((ans.get(i).contains(s))){
+                return false;
+            }
+        }return true;
+    }
+
+    public String conString(String s){
+        char c[]=s.toCharArray();
+        Arrays.sort(c);
+        String cs=new String(c);
+        return cs; 
+    }
+}
