@@ -1,0 +1,28 @@
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        int i=0;
+        int j=s.length()-1;
+        int f=0;
+        int l=0;
+        String v="aeiouAEIOU";
+        List<Character> li=new ArrayList<>();
+        for(int c=0;c<v.length();c++){
+            li.add(v.charAt(c));
+        }
+        while(i<j){
+        if(li.contains(s.charAt(i))){
+            f++;
+        }
+        if(li.contains(s.charAt(j))){
+            l++;
+        }
+            i++;
+            j--;
+
+        }
+        if(f==l){
+            return true;
+        }
+        return false;
+    }
+}
