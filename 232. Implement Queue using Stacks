@@ -1,0 +1,45 @@
+class MyQueue {
+    int qu[]=new int[100];
+    int front ,rear;
+    public MyQueue() {
+        front=-1;
+        rear =-1;
+    }
+    
+    public void push(int x) {
+        if(rear==-1){
+            front++;
+        }
+        qu[++rear]=x;
+    }
+    
+    public int pop() {
+        int a=0;
+        if(rear>-1 ){
+            a= qu[front++];
+        }
+        return a;
+    }
+    
+    public int peek() {
+        return qu[front];
+    }
+    
+    public boolean empty() {
+        
+        if(rear< front ||( rear==-1 && front ==-1)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
