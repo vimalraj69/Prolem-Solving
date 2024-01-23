@@ -1,0 +1,36 @@
+class Solution {
+    public String largestGoodInteger(String num) {
+
+        int f=0;
+        int l=3;
+        int max=0;
+        boolean found=false;
+        while(l<=num.length()){
+            String a=num.substring(f,l);
+            int count=0;
+           
+            for(int j=0;j<a.length();j++ ){
+                if(a.charAt(0)==a.charAt(j)){
+                    count++;
+                }
+            }
+            
+            if(count==3){
+                max=Math.max(max,Integer.valueOf(a));
+                found=true;
+            }
+            
+            f++;
+            l++;
+        }
+       
+        if(found && max==0){
+            return "000";
+        }
+        if(max==0){
+            return "";
+        }else{
+            return String.valueOf(max);
+        }
+    }
+}
