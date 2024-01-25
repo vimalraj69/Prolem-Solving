@@ -1,0 +1,45 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        List<Character> l1=new ArrayList<>();
+        List<Character> l2=new ArrayList<>();
+        List<Character> l3=new ArrayList<>();
+        String s1="QWERTYUIOPqwertyuiop";
+        String s2="ASDFGHJKLasdfghjkl";
+        String s3="ZXCVBNMzxcvbnm";
+        for(char c : s1.toCharArray()){
+            l1.add(c);
+        }
+        for(char c : s2.toCharArray()){
+            l2.add(c);
+        }
+        for(char c : s3.toCharArray()){
+            l3.add(c);
+        }
+        List<String> l=new ArrayList<>();
+        for(int i=0;i<words.length;i++){
+            String s=words[i];
+            int r1=0;
+            int r2=0;
+            int r3=0;
+            for(int j=0;j<s.length();j++){
+                if(l1.contains(s.charAt(j))){
+                    r1++;
+                }
+                if(l2.contains(s.charAt(j))){
+                    r2++;
+                }
+                if(l3.contains(s.charAt(j))){
+                    r3++;
+                }
+            }
+            if(r1==s.length() || r2==s.length() || r3==s.length()){
+                l.add(s);
+            }
+        }
+        String ans[]=new String[l.size()];
+        for(int i=0;i<l.size();i++){
+            ans[i]=l.get(i);
+        }
+        return ans;
+    }
+}
