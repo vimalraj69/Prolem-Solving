@@ -1,0 +1,32 @@
+class Solution {
+    public int countSymmetricIntegers(int low, int high) {
+        int ans=0;
+        for(int i=low;i<=high;i++){
+            if(check(i) ){
+                ans++;
+               
+            }
+        }
+        return ans;
+    }
+    public boolean check (int n){
+        int f=0;
+        int l=0;
+        String s= String.valueOf(n);
+        if(s.length()%2!=0){
+            return false;
+        }
+        int i=0;
+        int j=s.length()-1;
+        while(i<j){
+            f+=Character.getNumericValue(s.charAt(i));
+            l+=Character.getNumericValue(s.charAt(j));
+            i++;
+            j--;
+        }
+        if(f==l){
+            return true;
+        }
+        return false;
+    }
+}
