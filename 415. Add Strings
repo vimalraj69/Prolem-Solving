@@ -1,0 +1,60 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        String ans="";
+        int i=num1.length()-1;
+        int j=num2.length()-1;
+        int add=0;
+        while( i>=0  || j>=0){
+            if(i>=0 && j>=0){
+                add+=Character.getNumericValue(num1.charAt(i))+
+                        Character.getNumericValue(num2.charAt(j));
+                if(add>9){
+                    ans=String.valueOf(add%10)+ans;
+                    add=add/10;
+
+                }else{
+                    ans=String.valueOf(add)+ans;
+                    add=0;
+                }
+            }else if(i>=0 && j<0){
+                if(add>0){
+                    add+=Character.getNumericValue(num1.charAt(i));
+                    if(add>9){
+                    ans=String.valueOf(add%10)+ans;
+                    add=add/10;
+
+                }else{
+                    ans=String.valueOf(add)+ans;
+                    add=0;
+                }
+                }else{
+                    ans=num1.charAt(i)+ans;
+                }
+                
+                
+            }else if(i<0 && j>=0){
+                if(add>0){
+                    add+=Character.getNumericValue(num2.charAt(j));
+                    if(add>9){
+                    ans=String.valueOf(add%10)+ans;
+                    add=add/10;
+
+                }else{
+                    ans=String.valueOf(add)+ans;
+                    add=0;
+                
+            }
+                }else{
+                    ans=num2.charAt(j)+ans;
+                }
+                
+            }
+            i--;
+            j--;
+        }
+        if(add>0){
+            ans=Math.abs(Character.getNumericValue(add))+ans;
+        }
+        return ans;
+    }
+}
