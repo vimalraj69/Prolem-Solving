@@ -1,0 +1,26 @@
+class Solution {
+    public int maxFrequencyElements(int[] nums) {
+        int frq[]=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                int c=1;
+                for(int j=i+1;j<nums.length;j++){
+                    if(nums[i]==nums[j]){
+                        c++;
+                        nums[j]=0;
+                    }
+                }
+                frq[i]=c;
+            }
+        }
+        
+        Arrays.sort(frq);
+        int ans=0;
+    for(int i=frq.length-1;i>=0;i--){
+        if(frq[frq.length-1]==frq[i]){
+            ans+=frq[i];
+        }
+    }
+        return ans;
+    }
+}
