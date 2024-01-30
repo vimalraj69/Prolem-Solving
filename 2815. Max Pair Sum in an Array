@@ -1,0 +1,34 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        int ans=-1;
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(check(nums[i],nums[j])){
+                    System.out.print(nums[i]+" "+nums[j]);
+                    ans=Math.max(ans,nums[i]+nums[j]);
+                }
+            }
+        }
+        return ans;
+    }
+    public boolean check(int a,int b){
+       List<Integer> l1=new ArrayList<>();
+        List<Integer> l2=new ArrayList<>();
+        while(a!=0){
+            int n=a%10;
+            l1.add(n);
+            a/=10;
+        }
+        while(b!=0){
+            int n=b%10;
+            l2.add(n);
+            b/=10;
+        }
+        Collections.sort(l1);
+        Collections.sort(l2);
+        if(l1.get(l1.size()-1)==l2.get(l2.size()-1)){
+            return true;
+        }
+        return false;
+}
+}
