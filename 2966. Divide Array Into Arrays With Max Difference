@@ -1,0 +1,45 @@
+class Solution {
+    public int[][] divideArray(int[] nums, int k) {
+        Arrays.sort(nums);
+       List<List<Integer>> l= new ArrayList<>();
+      
+
+        for(int i=0;i<nums.length;i+=3){
+            int c=0;
+            List<Integer> li=new ArrayList<>();
+            for(int j=i;j<nums.length;j++){
+                if(Math.abs(nums[i]-nums[j])<=k ){
+                    li.add(nums[j]);
+                    c++;
+                    if(c==3){
+                        break;
+                    }
+                }
+               
+            }
+            if( li.size()>0){
+                   
+                   l.add(li);
+               }
+        }
+        
+        
+         int ans[][]=new int[l.size()][l.get(0).size()]; 
+       
+        for(int i=0;i<l.size();i++){
+
+            for(int j=0;j<l.get(i).size();j++){
+                if(l.get(i).size()==3){
+                     ans[i][j]=l.get(i).get(j);
+                }else{
+                    int arr[][]=new int[0][0];
+                    return arr;
+                }
+               
+                
+            }
+            
+        }
+        return ans;
+    }
+}
