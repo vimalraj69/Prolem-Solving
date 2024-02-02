@@ -1,0 +1,25 @@
+class Solution {
+    public List<Integer> sequentialDigits(int low, int high) {
+        List<Integer> l=new ArrayList<>();
+        List<String> li=new ArrayList<>();
+        String  s1=String.valueOf(low);
+        String  s2=String.valueOf(high);
+        int k=0;
+        String num="123456789";
+      int n=s1.length();
+    while(k!=num.length()){
+        for(int i =0;i<num.length()-n+1;i++){
+            li.add(num.substring(i,i+n));
+           
+        }
+         k=k+1;
+         n++;
+    }
+    for(String s : li){
+        if(low<=Integer.valueOf(s)&& Integer.valueOf(s)<=high){
+            l.add(Integer.valueOf(s));
+        }
+    }
+   return l;
+    }
+}
