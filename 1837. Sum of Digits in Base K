@@ -1,0 +1,17 @@
+class Solution {
+    public int sumBase(int n, int k) {
+        String s="";
+        while(n!=0){
+            int a=n/k;
+            int r=n%k;
+            s=String.valueOf(r)+s;
+            n=a;
+        }
+        //  System.out.print(s);
+        int ans=0;
+        for(char c : s.toCharArray()){
+            ans+=Character.getNumericValue(c);
+        }
+        return ans;
+    }
+}
