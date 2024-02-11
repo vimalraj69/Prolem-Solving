@@ -1,0 +1,26 @@
+class Solution {
+    public int calPoints(String[] operations) {
+       List<Integer> l=new ArrayList<>();
+       int id=-1;
+       for(int i=0;i<operations.length;i++) {
+           if(operations[i].equals("+")){
+               l.add(l.get(id)+l.get(id-1));
+               id++;
+           }else if(operations[i].equals("C")){
+               l.remove(id);
+               id--;
+           }else if(operations[i].equals("D")){
+               l.add(l.get(id)*2);
+               id++;
+           }else{
+               l.add(Integer.parseInt(operations[i]));
+               id++;
+           }
+       }
+       int ans=0;
+       for(int i : l){
+           ans+=i;
+       }
+       return ans;
+    }
+}
