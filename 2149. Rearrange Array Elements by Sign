@@ -1,0 +1,32 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        List<Integer> pos=new ArrayList<>();
+        List<Integer> neg=new ArrayList<>();
+
+        int ans[]=new int[nums.length];
+        for(int i : nums){
+            if(i>=0){
+                pos.add(i);
+            }else{
+                neg.add(i);
+            }
+        }
+        int p=0;
+        int n=0;
+        int i=0;
+        while(i<ans.length){
+            if(pos.size()>p){
+                ans[i]=pos.get(p);
+                p++;
+                i++;
+            }
+            if(neg.size()>n){
+                ans[i]=neg.get(n);
+                n++;
+                i++;
+            }
+            
+        }
+        return ans;
+    }
+}
