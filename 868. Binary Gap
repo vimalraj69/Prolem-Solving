@@ -1,0 +1,25 @@
+class Solution {
+    public int binaryGap(int n) {
+        int ans=0;
+        String s=Integer.toBinaryString(n);
+        for(int i=0;i<s.length();i++){
+            for(int j=i+1;j<s.length();j++){
+                if(s.charAt(i)=='1' && s.charAt(j)=='1'){
+                    ans=Math.max(ans,len(s.substring(i,j)));
+                }
+            }
+        }
+        return ans;
+    }
+    public int len(String s){
+        int c=1;
+        for(int i=1;i<s.length();i++){
+            if(s.charAt(i)!='1'){
+                c++;
+            }else{
+                return c;
+            }
+        }
+        return c;
+    }
+}
