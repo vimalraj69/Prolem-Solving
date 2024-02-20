@@ -1,0 +1,59 @@
+class Solution {
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+        List<List<Integer>> l=new ArrayList<>();
+        
+       int i=1;
+      
+       while(i<1001){
+           int n1=0;
+           int n2=0;
+           boolean f1=false;
+           boolean f2=false;
+
+           for(int k=0;k<nums1.length;k++){
+               if(i==nums1[k][0]){
+                   n1=k;
+                   f1=true;
+                   break;
+               }
+           }
+
+           for(int k=0;k<nums2.length;k++){
+               if(i==nums2[k][0]){
+                   n2=k;
+                   f2=true;
+                   break;
+               }
+           }
+           if(f1 && f2){
+               List<Integer> li=new ArrayList<>();
+               li.add(nums1[n1][0]);
+               li.add(nums1[n1][1]+nums2[n2][1]);
+               l.add(li);
+           }else{
+               if(f1){
+                  List<Integer> li=new ArrayList<>();
+                    li.add(nums1[n1][0]);
+                    li.add(nums1[n1][1]);
+                     l.add(li); 
+               }
+               if(f2){
+                   List<Integer> li=new ArrayList<>();
+                    li.add(nums2[n2][0]);
+                    li.add(nums2[n2][1]); 
+                     l.add(li);
+               }
+           }
+            i++;
+       }
+        int ans[][]=new int [l.size()][l.get(0).size()];
+       for(int j=0;j<l.size();j++){
+           for(int k=0;k<l.get(j).size();k++){
+               ans[j][k]=l.get(j).get(k);
+           }
+           
+       }
+
+        return ans;
+    }
+}
