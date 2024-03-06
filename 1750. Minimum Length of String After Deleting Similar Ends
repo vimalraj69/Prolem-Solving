@@ -1,0 +1,37 @@
+class Solution {
+    public int minimumLength(String s) {
+        int i=0;
+        int j=s.length()-1;
+        char c[]=s.toCharArray();
+        int y=0;
+        while( y<s.length()-1 && c[i]==c[j]){
+            
+            if(c[i]==c[j]){
+                int f=i;
+                int l=j;
+                char currf=c[i];
+                char currl=c[j];
+                while( f< j && currf==c[f] ){
+                    c[f]='0';
+                    f++;
+                }
+                while(l>i && currl==c[l] ){
+                    c[l]='0';
+                    l--;
+                }
+                i=f;
+                j=l;
+                System.out.println(i+" "+j);
+            }
+           y++;
+        }
+        int ans=0;
+    for(char x : c){
+       if(x!='0'){
+           ans++;
+       }
+    }
+
+        return ans;
+    }
+}
