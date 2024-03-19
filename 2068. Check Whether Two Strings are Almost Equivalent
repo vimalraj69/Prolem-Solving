@@ -1,0 +1,23 @@
+class Solution {
+    public boolean checkAlmostEquivalent(String word1, String word2) {
+        int c1[]=new int[26];
+       
+        
+
+        for(char c : word1.toCharArray()){
+            c1[c-'a']++;
+        }
+        for(char c : word2.toCharArray()){
+            c1[c-'a']--;
+        }
+        // for(int i : c1){
+        //     System.out.print(i+" ");
+        // }
+        for(int i : c1){
+            if(i>3 || i<-3){
+                return false;
+            }
+        }
+        return true;
+    }
+}
