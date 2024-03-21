@@ -1,0 +1,25 @@
+class Solution {
+    public String sortVowels(String s) {
+        char c[]=s.toCharArray();
+        List<Character> l=new ArrayList<>();
+        String vow="aeiouAEIOU";
+        for(int i =0;i<c.length;i++){
+            
+            if(vow.contains(String.valueOf(c[i]))){
+                l.add(c[i]);
+                c[i]=' ';
+            }
+        }
+        int j=0;
+        Collections.sort(l);
+        for(int i =0;i<c.length;i++){
+            if(c[i]==' '){
+                c[i]=l.get(j++);
+            }
+        }
+        
+    String ans=new String(c);
+
+        return ans;
+    }
+}
