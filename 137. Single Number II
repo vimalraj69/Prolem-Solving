@@ -1,0 +1,16 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        List<Integer> l=new ArrayList<>();
+         List<Integer> found=new ArrayList<>();
+         for(int i : nums){
+            if(!l.contains(i) && !found.contains(i)){
+                l.add(i);
+            }else{
+                found.add(i);
+                l.remove(Integer.valueOf(i));
+            }
+         }
+
+         return l.get(0);
+    }
+}
