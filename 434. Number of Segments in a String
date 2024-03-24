@@ -1,0 +1,19 @@
+class Solution {
+    public int countSegments(String s) {
+        if(s.equals(""))return 0;
+        List<String> l=new ArrayList<>();
+        String ss="";
+        for(char c: s.toCharArray()){
+            if(c==' ' && ss.length()>0){
+                l.add(ss);
+                ss="";
+            }else if(c!=' '){
+                ss+=c;
+            }
+        }
+        if(ss.length()>0){
+            l.add(ss);
+        }
+        return l.size();
+    }
+}
