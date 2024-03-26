@@ -1,0 +1,10 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxend=-100000; int maxseen=-100000;
+        for(int i : nums){
+            maxend=Math.max(i,i+maxend);
+            maxseen=Math.max(maxseen,maxend);
+        }
+        return maxseen;
+    }
+}
