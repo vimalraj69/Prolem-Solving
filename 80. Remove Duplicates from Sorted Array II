@@ -1,0 +1,26 @@
+class Solution {
+    List<Integer> l=new ArrayList<>();
+    public int removeDuplicates(int[] nums) {
+        int count=0;
+        for(int i =0;i<nums.length;i++){
+            if(check(nums[i])<2){
+                count++;
+                l.add(nums[i]);
+            }
+        }
+
+       for(int i=0;i<count;i++){
+        nums[i]=l.get(i);
+       } 
+       return count;
+    }
+    public int check(int n){
+        int c=0;
+        for(int i=0;i<l.size();i++){
+            if(n==l.get(i)){
+                c++;
+            }
+        }
+        return c;
+    }
+}
