@@ -1,0 +1,62 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        char arr1[]=a.toCharArray();
+        char arr2[]=b.toCharArray();
+        int head1=arr1.length-1;
+        int head2=arr2.length-1;
+        List<String> l=new ArrayList<>();
+        int carry=0;
+        while(head1>-1 || head2>-1){
+            if(head1>-1 && head2>-1){
+            
+                int aa=carry+Character.getNumericValue(arr1[head1--])+
+                    Character.getNumericValue(arr2[head2--]);
+                carry=0;
+                if(aa==1 || aa==0){
+                    l.add(String.valueOf(aa));
+                }else if(aa==2){
+                    carry=1;
+                    l.add("0");
+                }else{
+                    carry=1;
+                    l.add("1");
+                }
+            }else if(head1>-1){
+                int aa=carry+Character.getNumericValue(arr1[head1--]);
+                carry=0;
+                if(aa==1 || aa==0){
+                    l.add(String.valueOf(aa));
+                }else if(aa==2){
+                    carry=1;
+                    l.add("0");
+                }else{
+                    carry=1;
+                    l.add("1");
+                }
+
+            }else if(head2>-1){
+                int aa=carry+Character.getNumericValue(arr2[head2--]);
+                carry=0;
+                if(aa==1 || aa==0){
+                    l.add(String.valueOf(aa));
+                }else if(aa==2){
+                    carry=1;
+                    l.add("0");
+                }else{
+                    carry=1;
+                    l.add("1");
+                }
+            }
+        }
+        if(carry>0){
+            l.add("1");
+        }
+        String ans="";
+        for(int i =l.size()-1;i>=0;i--){
+            ans+=l.get(i);
+        }
+
+        return ans;
+        
+    }
+}
