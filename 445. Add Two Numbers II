@@ -1,0 +1,80 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+       int arr1[]=new int[100];
+       int arr2[]=new int [100];
+       int head1=-1;int head2=-1;
+
+       while(l1!=null || l2!=null){
+        if(l1!=null){
+            arr1[++head1]=l1.val;
+            l1=l1.next;
+        }
+        if(l2!=null){
+            arr2[++head2]=l2.val;
+            l2=l2.next;
+        }
+       }
+        List<Integer> l=new ArrayList<>();
+        int carry=0;
+        while(head1!=-1 || head2!=-1){
+            if(head1 >-1 && head2>-1){
+                int a= carry+arr1[head1--]+arr2[head2--];
+                carry=0;
+                if(a>9){
+                    l.add(a%10);
+                    carry=a/10;
+                }else{
+                    l.add(a);
+                }
+            }else if(head1>-1){
+                int a=arr1[head1--]+carry;
+                carry=0;
+                if(a>9){
+                   l.add(a%10);
+                    carry=a/10; 
+                }else{
+                    l.add(a);
+                }
+                
+            }else if(head2>-1){
+                 int a=arr2[head2--]+carry;
+                carry=0;
+                if(a>9){
+                   l.add(a%10);
+                    carry=a/10; 
+                }else{
+                    l.add(a);
+                }
+            }
+
+        }
+       
+        ListNode ans=new ListNode();
+        ListNode temp=ans;
+        if(carry>0){
+            ans.val=carry;
+            ans.next =new ListNode();
+            ans=ans.next;
+        }
+        
+        for(int i=l.size()-1;i>=0;i--){
+            ans.val=l.get(i);
+            if(i!=0){
+                ans.next =new ListNode();
+                ans=ans.next; 
+            }
+        }
+        
+        return temp;
+    }
+}
