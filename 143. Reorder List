@@ -1,0 +1,68 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+       List<Integer> l=new ArrayList<>(); 
+       List<Integer> first=new ArrayList<>();
+        List<Integer> last=new ArrayList<>();
+        int i =0;
+        ListNode temp=head;
+        while(temp!=null){
+            
+                l.add(temp.val);
+                temp=temp.next;
+           
+        }
+        for(int j=0;j<l.size();j++){
+            if(j<l.size()/2){
+                first.add(l.get(j));
+            }else{
+                last.add(l.get(j));
+            }
+        }
+        head.next=null;
+        // head=null;
+        i =0;
+        int j=last.size()-1;
+        ListNode ans=head;
+        // for(int k : first){
+        //     System.out.print(k+" ");
+        // }
+        // System.out.println();
+        // for(int k : last){
+        //     System.out.print(k+" ");
+        // }
+        while(i<first.size() || j>-1){
+            if(i<first.size()){
+                ans.val=first.get(i);
+                
+                ans.next=new ListNode();
+                ans=ans.next;
+                
+                i++;
+            }
+            if(j>-1){
+                ans.val=last.get(j);
+               
+                ans.next=new ListNode();
+                ans=ans.next;
+                
+                j--;
+            }
+        }
+        ans=head;
+        while(ans.next.next!=null){
+            ans=ans.next;
+        }
+        ans.next=null;
+
+    }
+}
