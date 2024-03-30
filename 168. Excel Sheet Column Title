@@ -1,0 +1,11 @@
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        String ans="";
+        while(columnNumber!=0){
+            int rem=(columnNumber-1 )%26;
+            ans=(char)('A'+rem)+ans;
+            columnNumber=(columnNumber-1)/26;
+        }
+        return ans;
+    }
+}
