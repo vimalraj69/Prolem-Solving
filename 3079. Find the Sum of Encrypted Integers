@@ -1,0 +1,23 @@
+class Solution {
+    public int sumOfEncryptedInt(int[] nums) {
+        int ans=0;
+        for(int i : nums){
+            ans+=encrypt(String.valueOf(i));
+        }
+        return ans;
+    }
+
+    public int encrypt(String s){
+        char arr[]=s.toCharArray();
+        int min=0;
+        for(char c : arr){
+            min=Math.max(Character.getNumericValue(c),min);
+        }
+        String max=String.valueOf(min);
+        String ans="";
+        for(int i =0;i<s.length();i++){
+            ans+=max;
+        }
+        return Integer.valueOf(ans);
+    }
+}
