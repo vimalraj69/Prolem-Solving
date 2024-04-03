@@ -1,0 +1,51 @@
+class Solution {
+    public boolean haveConflict(String[] event1, String[] event2) {
+       String t1_start="";
+       String t1_end="";
+       String t2_start="";
+       String t2_end="";
+       for(int i =0;i<event1[0].length();i++){
+        if(event1[0].charAt(i)==':'){
+            t1_start+='.';
+        }else{
+            t1_start+=event1[0].charAt(i);
+        }
+       }
+       for(int i =0;i<event1[1].length();i++){
+        if(event1[1].charAt(i)==':'){
+            t1_end+='.';
+        }else{
+            t1_end+=event1[1].charAt(i);
+        }
+       }
+       for(int i =0;i<event2[1].length();i++){
+        if(event2[1].charAt(i)==':'){
+            t2_end+='.';
+        }else{
+            t2_end+=event2[1].charAt(i);
+        }
+       }
+
+       for(int i =0;i<event2[0].length();i++){
+        if(event2[0].charAt(i)==':'){
+            t2_start+='.';
+        }else{
+            t2_start+=event2[0].charAt(i);
+        }
+       }
+      float t1_s=Float.valueOf(t1_start);
+      float t1_e=Float.valueOf(t1_end);
+      float t2_s=Float.valueOf(t2_start);
+      float t2_e=Float.valueOf(t2_end);
+    //   System.out.println(t1_s);
+    //   System.out.println(t1_e);
+    //   System.out.println(t2_s);
+    //   System.out.println(t2_e);
+      if((t1_s<= t2_s && t2_s<= t1_e ) || (t1_s<= t2_e && t2_e<= t1_e )||
+      (t2_s<= t1_s && t1_s<= t2_e ) || (t2_s<= t1_e && t1_e<= t2_e )) {
+        return true;
+      }
+
+       return false; 
+    }
+}
