@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isCircularSentence(String sentence) {
+        List<Character> l=new ArrayList<>();
+        String temp="";
+        for(char c : sentence.toCharArray()){
+            if(c==' '){
+                l.add(temp.charAt(0));
+                l.add(temp.charAt(temp.length()-1));
+                temp="";
+            }else{
+                temp+=c;
+            }
+        }
+        if(temp.length()>0){
+            l.add(temp.charAt(0));
+            l.add(temp.charAt(temp.length()-1));
+        }
+        // for(char c : l){
+        //     System.out.print(c+" ");
+        // }
+        System.out.println();
+        for(int i=1;i<l.size()-1;i=i+2){
+            // System.out.println(l.get(i)+" "+l.get(i+1));
+            if(l.get(i)!=l.get(i+1)){
+                return false;
+            }
+        }
+        if(l.get(0)!=l.get(l.size()-1)){
+            return false;
+        }
+        return true;
+    }
+}
