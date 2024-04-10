@@ -1,0 +1,31 @@
+class Solution {
+    public String makeGood(String s) {
+        boolean c=false,l=false;
+        Stack<Character> st=new Stack<>();
+        for(char ch : s.toCharArray()){
+            boolean f= true;
+           if(st.size()>0){
+            
+            if(Character.isUpperCase(ch)){
+                if(ch-'A' ==st.peek()-'a'){
+                    st.pop();
+                    f=false;
+                }
+            }else{
+                if(ch-'a' ==st.peek()-'A'){
+                    st.pop();
+                    f=false;
+                }
+            }
+           }
+           if(f){
+            st.add(ch);
+           }
+        }
+        String ans="";
+        for(char ch : st){
+            ans+=ch;
+        }
+        return ans;
+    }
+}
