@@ -1,0 +1,24 @@
+class RecentCounter {
+    int arr []= new int[10000];
+    int req;
+    public RecentCounter() {
+        req=0;
+    }
+    
+    public int ping(int t) {
+        arr[req++]=t;
+        int count=0;
+        for(int i =0;i<req;i++){
+            if(arr[i]>=t-3000 && arr[i]<=t){
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.ping(t);
+ */
