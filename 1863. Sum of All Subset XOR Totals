@@ -1,0 +1,31 @@
+class Solution {
+     List<List<Integer>> l = new ArrayList<>();
+
+    public void backtrack(int nums[], int i,List< List<Integer>> l , List<Integer>li){
+        if(i>=nums.length){
+            l.add(new ArrayList(li));
+            return;
+        }
+        li.add(nums[i]);
+        backtrack(nums, i+1,l,li);
+        li.remove(li.size()-1);
+         backtrack(nums, i+1,l,li);
+    }
+    public int subsetXORSum(int[] nums) {
+        ArrayList<Integer> li = new ArrayList<>();
+
+        backtrack(nums,0,l,li);
+
+        int ans=0;
+        for(int i =0 ;i< l.size();i++){
+            int add=0;
+            for(int j=0 ; j< l.get(i).size(); j++){
+                add^=l.get(i).get(j);    
+            }
+            System.out.println();
+            ans+=add;
+        }
+
+        return ans;
+    }
+}
