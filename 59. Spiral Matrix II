@@ -1,0 +1,45 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+       
+
+        int matrix[][]= new int [n][n];
+         int i =1;
+        int firstrow=0;
+        int lastrow=matrix.length-1;
+        int firstcol=0;
+        int lastcol=matrix[0].length-1;
+
+        while(i<= matrix.length * matrix.length){
+            if(i<= matrix.length * matrix.length){
+                for(int j =firstrow ; j<= lastcol; j++){
+                matrix[firstrow][j]=i;
+                i++;
+                 } 
+                 firstrow++;
+            }
+            if(i<= matrix.length * matrix.length){
+                for(int j =firstrow ; j<=lastrow; j++) {
+                matrix[j][lastcol]=i;
+                i++;
+            }
+            lastcol--;
+            }
+            if(i<= matrix.length * matrix.length){
+                 for(int j =lastcol ; j>=firstcol; j--) {
+               matrix[lastrow][j]=i;
+                i++;
+            }
+            lastrow--;
+            }
+            if(i<= matrix.length * matrix.length){
+              for(int j =lastrow ; j>=firstrow; j--) {
+                matrix[j][firstcol]=i;
+                i++;
+            }
+            firstcol++;  
+            }
+             
+        }
+        return matrix;
+    }
+}
