@@ -1,0 +1,27 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        Queue<Character> q = new LinkedList<>();
+        Queue<Character> cq = new LinkedList<>();
+
+
+        for(char c : s.toCharArray()){
+            q.add(c);
+        }
+        for(char c : goal.toCharArray()){
+            cq.add(c);
+        }
+
+        int i =0;
+
+        while(i<=100){
+            if(q.equals(cq)){
+                return true;
+            }
+            char val = q.poll();
+            q.add(val);
+            i++;
+        }
+
+        return false;
+    }
+}
