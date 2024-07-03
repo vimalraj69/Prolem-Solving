@@ -1,0 +1,20 @@
+class Solution {
+    public int isPrefixOfWord(String sentence, String searchWord) {
+        
+        String arr[] = sentence.split(" ");
+
+        for(int k =0; k< arr.length; k++){
+            String s = arr[k];
+            int count =0;
+           for(int i =0;i< searchWord.length(); i++){
+            if(i<s.length() && s.charAt(i)==searchWord.charAt(i) ){
+                count ++;
+            }
+           }
+           if(count == searchWord.length()){
+            return k+1;
+           }
+        }
+        return -1;
+    }
+}
