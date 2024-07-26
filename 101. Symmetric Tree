@@ -1,0 +1,101 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null) {
+			return false;
+		}
+		
+		List<StringBuilder> left = new ArrayList();
+		bfsLeft(root.left, left);
+		
+		List<StringBuilder> right = new ArrayList();
+		bfsRight(root.right, right);
+		
+		if(left.size() != right.size()){
+            return false;
+        }
+
+        int i =0;
+
+        while(i<left.size()){
+            String s1 = left.get(i).toString();
+            String s2 = right.get(i).toString();
+
+            
+            if(!s1.equals(s2)){
+                return false;
+            }
+            i++;
+        }
+		return true;
+    }
+    void  bfsLeft(TreeNode root, List<StringBuilder> list) {
+		if(root == null ) {
+			return ;
+		}
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        q.add(root);
+
+        while(!q.isEmpty()){
+            int size = q.size();
+            StringBuilder sb = new StringBuilder();
+            for(int i =0; i<size; i++){
+                 TreeNode current = q.poll();
+                if(current !=null){
+                    sb.append(current.val);
+                    q.add(current.left);
+                    q.add(current.right);
+                }else{
+                    sb.append("null");
+                }
+            }
+            list.add(new StringBuilder(sb));
+        }
+		
+	}
+
+    void  bfsRight(TreeNode root, List<StringBuilder> list) {
+		if(root == null ) {
+			return ;
+		}
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        q.add(root);
+
+        while(!q.isEmpty()){
+            int size = q.size();
+            StringBuilder sb = new StringBuilder();
+            for(int i =0; i<size; i++){
+                 TreeNode current = q.poll();
+                if(current !=null){
+                    sb.insert(0,current.val);
+                    q.add(current.left);
+                    q.add(current.right);
+                }else{
+                    sb.insert(0,"null");
+                }
+            }
+            list.add(new StringBuilder(sb));
+        }
+		
+	}
+	
+	
+}
