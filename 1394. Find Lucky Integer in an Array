@@ -1,0 +1,21 @@
+class Solution {
+    public int findLucky(int[] arr) {
+        TreeMap<Integer,Integer> map = new TreeMap<>();
+        
+
+        for(int i : arr){
+            int val = map.getOrDefault(i, 0);
+           
+            map.put(i, val+1);
+        }
+       
+
+        while(!map.isEmpty()){
+            Map.Entry<Integer,Integer> et = map.pollLastEntry();
+            if(et.getValue()== et.getKey()){
+                return et.getValue();
+            }
+        }
+        return -1;
+    }
+}
