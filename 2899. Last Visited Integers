@@ -1,0 +1,32 @@
+class Solution {
+    public List<Integer> lastVisitedIntegers(int[] nums) {
+        Stack <Integer> st  = new Stack<>();
+        List<Integer> ans = new ArrayList<>();
+        int i =0;
+        while(i<nums.length){
+            if(nums[i] >0){
+                st.push(nums[i]);
+            }else{
+                int  j =i;
+                Stack<Integer> temp = new Stack<>();
+                while(j<nums.length && nums[j]==-1){
+                    if(!st.isEmpty()){
+                        int val =st.pop();
+                        ans.add(val);
+                        temp.push(val);
+                    }else{
+                        ans.add(-1);
+                    }
+                    j++;
+                }
+                i=j-1;
+                 while(!temp.isEmpty()){
+                    st.push(temp.pop());
+                }
+            }
+           
+            i++;
+        }
+        return ans;
+    }
+}
