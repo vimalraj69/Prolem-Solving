@@ -1,0 +1,48 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        HashMap<String , Integer> map = new HashMap<>();
+
+        String arr []= paragraph.split("[,\\s]+");
+        for(String s : arr){
+            String valid = format(s);
+            int val = map.getOrDefault(valid,0);
+            map.put(valid,val+1);
+        }
+
+        List<String> ban = new ArrayList<>();
+
+        for(String s : banned){
+            ban.add(s);
+        }
+        
+        // System.out.print(ban+" "+map);
+        
+
+        while(!map.isEmpty()){
+            int max =-1;
+            String key ="";
+            for(Map.Entry<String , Integer> e : map.entrySet()){
+                if(max< e.getValue()){
+                    key = e.getKey();
+                    max = e.getValue();
+                }
+            }
+
+            if(!ban.contains(key)){
+                return key;
+            }
+            map.remove(key);
+        }
+        
+        return paragraph;
+    }
+
+    String format (String s){
+        String res ="";
+        for(char c : s.toCharArray()){
+            if(Character.isLetter(c))
+            res+=Character.toLowerCase(c);
+        }
+        return res;
+    }
+}
