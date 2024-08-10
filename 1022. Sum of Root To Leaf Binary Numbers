@@ -1,0 +1,61 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int sumRootToLeaf(TreeNode root) {
+        
+        List<StringBuilder> l = new ArrayList<>();
+        
+        dfs(root, l , new StringBuilder());
+        int ans =0;
+
+        // System.out.println("//"+Math.pow(2,0));
+        for(StringBuilder sb : l){
+
+            int i = sb.length()-1;
+          
+            int cur =0;
+            int  j =0;
+            while(i>=0){
+                if (sb.charAt(i)== '1'){
+                cur += Math.pow(2,j);
+                }
+               i--;
+               j++;
+            }
+            // System.out.print(cur +" ");
+            ans+=cur;
+        }
+
+        return ans;
+    }
+
+    void dfs (TreeNode root , List<StringBuilder> l , StringBuilder sb){
+
+        if(root == null){
+            return ;
+        }
+
+        sb.append(String.valueOf(root.val));
+
+        if(root.left == null && root.right == null){
+            l.add(new StringBuilder(sb));
+
+        }
+        dfs(root.left , l , sb);
+        dfs(root.right , l , sb);
+        sb.deleteCharAt(sb.length()-1);
+    }
+}
