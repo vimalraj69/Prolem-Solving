@@ -1,0 +1,25 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> l = new ArrayList<>();
+        comb(n,ans, l, k,1);
+        return ans;
+    }
+
+    void comb(int n, List<List<Integer>> ans,List<Integer> l, int k , int i){
+        if(l.size()==k){
+            ans.add(new ArrayList<>(l));
+            return ;
+        }
+
+        if(i>n){
+            return ;
+        }
+
+        l.add(i);
+        comb(n, ans, l, k, i+1);
+        l.remove(l.size()-1);
+        comb(n, ans, l, k, i+1);   
+    }
+}
+// 1 2 3 4
