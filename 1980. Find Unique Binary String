@@ -1,0 +1,24 @@
+class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+        List<String> l = new ArrayList<>();
+
+        for(String s : nums){
+            l.add(s);
+        }
+        String ans = find(nums.length,"",l);
+        return ans;
+    }
+
+    String find(int n , String s,List<String> l){
+        if(s.length() >=n){
+            if(!l.contains(s)){
+                return s;
+            }
+            return "";
+        }
+      String s1= find(n, s+"0",l);
+      String s2 =find(n, s+"1",l);
+
+      return s1.equals("") ? s2 : s1;
+    }
+}
