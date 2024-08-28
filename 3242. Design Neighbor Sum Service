@@ -1,0 +1,111 @@
+class NeighborSum {
+    int grid[][];
+    public NeighborSum(int[][] grid) {
+        this.grid= grid;
+    }
+    
+    public int adjacentSum(int value) {
+        int i=0;
+        int j=0 ;
+        boolean found=false;
+        for(i =0; i<grid.length; i++){
+            for( j =0; j<grid[i].length; j++){
+                if(grid[i][j]==value){
+                    found = true;
+                    break;
+                }
+            }
+            if(found){
+                break;
+            }
+        }
+        int ans=0;
+        int top_i= i-1;
+        int top_j=j;
+
+        int right_i=i;
+        int right_j=j+1;
+
+        int left_i=i;
+        int left_j=j-1;
+
+        int bot_i= i+1;
+        int bot_j=j;
+
+        if(top_i>=0 && top_j>=0 ){
+            ans+=grid[top_i][top_j];
+        }
+        if(left_i>=0 && left_j>=0){
+            ans+=grid[left_i][left_j];
+        }
+        if(right_i <grid.length && right_j < grid.length){
+            ans+=grid[right_i][right_j];
+        }
+        if(bot_i<grid.length && bot_j<grid.length){
+            ans+=grid[bot_i][bot_j];
+        }
+
+        return ans;
+    }
+    
+    public int diagonalSum(int value) {
+        int i=0;
+        int j=0 ;
+        boolean found=false;
+        for(i =0; i<grid.length; i++){
+            for( j =0; j<grid[i].length; j++){
+                if(grid[i][j]==value){
+                    found = true;
+                    break;
+                }
+            }
+            if(found){
+                break;
+            }
+        }
+        int ans=0;
+        int topL_i= i-1;
+        int topL_j=j-1;
+
+        int topR_i= i-1;
+        int topR_j=j+1;
+
+        int botL_i=i+1;
+        int botL_j=j-1;
+
+        int botR_i=i+1;
+        int botR_j=j+1;
+
+        // System.out.println(i+" "+j);
+        // System.out.println(topL_i+" "+topL_j);
+        // System.out.println(topR_i+" "+topR_j);
+        // System.out.println(botL_i+" "+botL_j);
+        // System.out.println(botR_i+" "+botR_j+"\n\n\n\n\n");
+        if(topL_i>=0 && topL_j>=0){
+            ans+=grid[topL_i][topL_j];
+        }
+        if(  topR_j<grid.length && topR_i>=0 ){
+            ans+=grid[topR_i][topR_j];
+            
+        }
+
+        if(botL_i>=0 && botL_j>=0 && botL_i<grid.length && botL_j<grid.length){
+            ans+=grid[botL_i][botL_j];
+            
+        }
+        if(botR_i<grid.length && botR_j<grid.length){
+            ans+=grid[botR_i][botR_j];
+            
+        }
+
+
+        return ans;
+    }
+}
+
+/**
+ * Your NeighborSum object will be instantiated and called as such:
+ * NeighborSum obj = new NeighborSum(grid);
+ * int param_1 = obj.adjacentSum(value);
+ * int param_2 = obj.diagonalSum(value);
+ */
