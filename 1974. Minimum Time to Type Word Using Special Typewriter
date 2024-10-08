@@ -1,0 +1,58 @@
+class queue{
+    int count;
+    Deque<Character> dq ;
+    queue(Deque<Character> dq, int c){
+        this.dq = dq;
+        this.count=c;
+    }
+}
+class Solution {
+    public int minTimeToType(String word) {
+        Deque<Character> dq = new LinkedList<>();
+        for(int i =0; i<26; i++){
+           dq.add((char)(i+'a'));
+        }
+        int ans =0;
+
+        for(char c : word.toCharArray()){
+            queue q = min(dq, c, ans);
+            ans=q.count;
+            dq = q.dq;
+        }
+        return ans;
+    }
+
+    private queue min (Deque<Character> dq  , char c , int count){
+        queue frw = new queue(new LinkedList(dq), count);
+        queue rev = new queue(new LinkedList(dq), count);
+        // System.out.println(rev.dq);
+        // if (dq.size() == 26)
+        // return rev;
+//        int intial = frw.count;
+        while(true){
+            char cur = frw.dq.peekFirst();
+            
+            if (cur == c ){
+                frw.count++;
+                break;
+            }
+            
+            frw.dq.addLast(frw.dq.pollFirst());
+            frw.count++;
+        }
+        
+         while(rev.count < frw.count){
+            char cur = rev.dq.peekFirst();
+            
+            if (cur== c ){
+                rev.count++;
+                break;
+            }
+            
+            rev.dq.addFirst(rev.dq.pollLast());
+            rev.count++;
+        }
+
+        return frw.count <= rev.count ? frw : rev;
+    }
+}
