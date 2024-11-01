@@ -1,0 +1,24 @@
+class Solution {
+    public String makeFancyString(String s) {
+       String res="";
+       int i =0;
+
+       while(i<s.length()){
+        char c =s.charAt(i);
+        int j =i+1;
+        boolean found = false;
+        while(j<s.length() &&  c == s.charAt(j)){
+            found = true;
+            j++;
+        }
+        if (found){
+            found = false;
+            res+=c+""+c;
+        }else{
+            res+=c;
+        }
+        i=j;
+       }
+       return res;
+    }
+}
